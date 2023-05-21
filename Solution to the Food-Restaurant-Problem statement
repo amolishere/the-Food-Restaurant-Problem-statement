@@ -85,3 +85,8 @@ WITH price_points AS
  FROM menu
  )
 
+SELECT s.customer_id, SUM(p.points) AS total_points
+FROM price_points_cte AS p
+JOIN sales AS s
+ ON p.product_id = s.product_id
+GROUP BY s.customer_id
